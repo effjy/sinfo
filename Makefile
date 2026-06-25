@@ -11,12 +11,14 @@ PREFIX  ?= /usr
 BINDIR   = $(PREFIX)/bin
 DATADIR  = $(PREFIX)/share
 APPDIR   = $(DATADIR)/applications
-ICONDIR  = $(DATADIR)/icons/hicolor/scalable/apps
+SVGDIR   = $(DATADIR)/icons/hicolor/scalable/apps
+PNGDIR   = $(DATADIR)/icons/hicolor/256x256/apps
 
 TARGET   = sinfo
 SRC      = main.cpp
-DESKTOP  = org.effjy.sinfo.desktop
-ICON     = sinfo.svg
+DESKTOP  = sinfo.desktop
+SVG      = sinfo.svg
+PNG      = sinfo.png
 
 all: $(TARGET)
 
@@ -26,7 +28,8 @@ $(TARGET): $(SRC)
 install: $(TARGET)
 	install -Dm755 $(TARGET)  $(DESTDIR)$(BINDIR)/$(TARGET)
 	install -Dm644 $(DESKTOP) $(DESTDIR)$(APPDIR)/$(DESKTOP)
-	install -Dm644 $(ICON)    $(DESTDIR)$(ICONDIR)/$(ICON)
+	install -Dm644 $(SVG)     $(DESTDIR)$(SVGDIR)/$(SVG)
+	install -Dm644 $(PNG)     $(DESTDIR)$(PNGDIR)/$(PNG)
 	-gtk-update-icon-cache -f -t $(DESTDIR)$(DATADIR)/icons/hicolor 2>/dev/null || true
 	-update-desktop-database $(DESTDIR)$(APPDIR) 2>/dev/null || true
 	@echo "Installed sinfo to $(DESTDIR)$(BINDIR)/$(TARGET)"
@@ -34,7 +37,8 @@ install: $(TARGET)
 uninstall:
 	rm -f $(DESTDIR)$(BINDIR)/$(TARGET)
 	rm -f $(DESTDIR)$(APPDIR)/$(DESKTOP)
-	rm -f $(DESTDIR)$(ICONDIR)/$(ICON)
+	rm -f $(DESTDIR)$(SVGDIR)/$(SVG)
+	rm -f $(DESTDIR)$(PNGDIR)/$(PNG)
 	-gtk-update-icon-cache -f -t $(DESTDIR)$(DATADIR)/icons/hicolor 2>/dev/null || true
 	-update-desktop-database $(DESTDIR)$(APPDIR) 2>/dev/null || true
 	@echo "Uninstalled sinfo"

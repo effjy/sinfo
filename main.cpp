@@ -94,6 +94,7 @@ SinfoWindow::SinfoWindow() {
 
 void SinfoWindow::build_ui() {
     set_title("sinfo — Services Information");
+    set_icon_name("sinfo");
     set_default_size(1150, 620);
 
     auto* root = Gtk::make_managed<Gtk::Box>(Gtk::Orientation::HORIZONTAL, 0);
@@ -348,7 +349,7 @@ void SinfoWindow::run_action(const Glib::ustring& verb) {
 
 class SinfoApp : public Gtk::Application {
 protected:
-    SinfoApp() : Gtk::Application("org.effjy.sinfo") {}
+    SinfoApp() : Gtk::Application("com.github.effjy.sinfo") {}
 
 public:
     static Glib::RefPtr<SinfoApp> create() {
