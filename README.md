@@ -1,6 +1,6 @@
 <div align="center">
 
-# sinfo — Services Information
+<a href="https://github.com/effjy/sinfo/"><img src="titles/services-information-title.svg" height="52" alt="Services Information"></a>
 
 A clean **GTK4** front-end for listing and managing **systemd services**.
 
